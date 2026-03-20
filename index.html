@@ -1,15 +1,26 @@
 <script>
 const MAP = {
+    // test
     "abc123": "shopeevn://home?navRoute=XXX"
 };
 
+// lấy code từ query
 const params = new URLSearchParams(location.search);
 let code = params.get("c");
+
+// fallback nếu không có ?c=
+if (!code) {
+    code = location.hash.replace("#", "");
+}
+
+// debug
+console.log("CODE:", code);
 
 let deeplink = MAP[code];
 
 if (!deeplink) {
-    location.href = "https://google.com";
+    document.body.innerHTML = "INVALID CODE: " + code;
+    throw new Error("No deeplink");
 }
 
 let ua = navigator.userAgent.toLowerCase();
