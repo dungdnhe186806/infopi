@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8"/>
-
 <script>
-var ua = navigator.userAgent.toLowerCase();
+const params = new URLSearchParams(location.search);
+const target = params.get("url");
+
+const ua = navigator.userAgent.toLowerCase();
 
 if (ua.includes("android") || ua.includes("iphone")) {
-    window.location.href = "shopeevn://home?navRoute=XXX";
+    window.location.href = target;
     setTimeout(() => {
         window.location.href = "https://shopee.vn";
     }, 1500);
@@ -15,7 +13,3 @@ if (ua.includes("android") || ua.includes("iphone")) {
     window.location.href = "https://google.com";
 }
 </script>
-
-</head>
-<body></body>
-</html>
