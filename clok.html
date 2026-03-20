@@ -1,15 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+
+<!-- Deep link -->
+<meta http-equiv="refresh" content="0;url='__DEEPLINK__'"/>
+
+<title>Redirecting...</title>
+
 <script>
-const params = new URLSearchParams(location.search);
-const target = params.get("url");
+var ua = navigator.userAgent.toLowerCase();
 
-const ua = navigator.userAgent.toLowerCase();
-
-if (ua.includes("android") || ua.includes("iphone")) {
-    window.location.href = target;
-    setTimeout(() => {
-        window.location.href = "https://shopee.vn";
-    }, 1500);
-} else {
+// PC → redirect luôn
+if (!(ua.includes("android") || ua.includes("iphone"))) {
     window.location.href = "https://google.com";
 }
+
+// mobile fail mở app → fallback
+setTimeout(() => {
+    window.location.href = "https://shopee.vn";
+}, 1500);
 </script>
+
+</head>
+<body></body>
+</html>
