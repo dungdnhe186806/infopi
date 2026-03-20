@@ -1,36 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8"/>
-<title>Redirecting...</title>
-
 <script>
-function decodeBase64(str) {
-    try {
-        return decodeURIComponent(atob(str));
-    } catch (e) {
-        return null;
-    }
-}
+const MAP = __MAP__;
 
-// lấy path hoặc query
-let path = location.pathname.replace("/", "");
-let param = new URLSearchParams(location.search).get("d");
+let code = location.hash.replace("#", "");
 
-let encoded = param || path;
-
-if (!encoded) {
-    location.href = "https://google.com";
-}
-
-// decode
-let deeplink = decodeBase64(encoded);
+let deeplink = MAP[code];
 
 if (!deeplink) {
     location.href = "https://google.com";
 }
 
-// detect device
 let ua = navigator.userAgent.toLowerCase();
 
 if (ua.includes("android") || ua.includes("iphone")) {
@@ -43,7 +21,3 @@ if (ua.includes("android") || ua.includes("iphone")) {
     location.href = "https://google.com";
 }
 </script>
-
-</head>
-<body></body>
-</html>
