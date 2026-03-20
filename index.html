@@ -1,7 +1,10 @@
 <script>
-const MAP = {"wfd4ng":"shopeevn://home?navRoute=eyJwYXRocyI6IFt7IndlYk5hdiI6IHsidXJsIjogImh0dHBzOi8vc2hvcGVlLnZuL2JyaWRnZV9jbWQvP2NtZD1vcGVuRXh0ZXJuYWxMaW5rJmFmZmlsaWF0ZV9pZD0xNzM2NTEzMDAwMCZ1dG1fc291cmNlPWFuXzE3MzY1MTMwMDAwJnV0bV9tZWRpdW09YWZmaWxpYXRlcyZ1cmw9aHR0cHMlM0EvL3lvdXR1YmUuY29tIn19XX0="};
+const MAP = {
+    "abc123": "shopeevn://home?navRoute=XXX"
+};
 
-let code = location.hash.replace("#", "");
+const params = new URLSearchParams(location.search);
+let code = params.get("c");
 
 let deeplink = MAP[code];
 
